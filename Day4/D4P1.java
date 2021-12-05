@@ -25,23 +25,79 @@ public class D4P1 {
         reader.readLine();
         saveBingoBoards(bingoBoards, reader);
         
-
+        boolean bingo = false;
+        int boardNum = 0;
+        int sum = 0;
+        int finalScore = 0;
         // Iterate through Bingo Numbers, replace Bingo number on boards with '0'
-        for (Integer number : bingoNumbers) {
-            // Replace bingo number on all boards
-            for (int[][] bingoBoard : bingoBoards) {
-                for (int i = 0; i < 5; i++) {
-                    for (int j = 0; j < 5; j++) {
-                        if (bingoBoard[i][j] == number) {
-                            bingoBoard[i][j] = 0;
+        while (!bingo) {
+            for (Integer number : bingoNumbers) {
+                // Replace bingo number on all boards
+                for (int[][] bingoBoard : bingoBoards) {
+                    for (int i = 0; i < 5; i++) {
+                        for (int j = 0; j < 5; j++) {
+                            if (bingoBoard[i][j] == number) {
+                                bingoBoard[i][j] = 0;
+                            }
                         }
                     }
                 }
+    
+                // Within for loop, add check to all boards for bingo
+                boardNum = 0;
+                for (int[][] bingoBoard : bingoBoards) {
+                    for (int i = 0; i < 5; i++) {
+                        if (bingoBoard[0][i] == 0) {
+                            if (bingoBoard[1][i] == 0) {
+                                if (bingoBoard[2][i] == 0) {
+                                    if (bingoBoard[3][i] == 0) {
+                                        if (bingoBoard[4][i] == 0) {
+                                            bingo = true;
+                                            for (int j = 0; j < 5; j++) {
+                                                for (int x = 0; x < 5; x++) {
+                                                    sum += bingoBoard[j][x];
+                                                }
+                                            }
+                                            finalScore = sum * number;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    for (int i = 0; i < 5; i++) {
+                        if (bingoBoard[i][0] == 0) {
+                            if (bingoBoard[i][1] == 0) {
+                                if (bingoBoard[i][2] == 0) {
+                                    if (bingoBoard[i][3] == 0) {
+                                        if (bingoBoard[i][4] == 0) {
+                                            bingo = true;
+                                            for (int j = 0; j < 5; j++) {
+                                                for (int x = 0; x < 5; x++) {
+                                                    sum += bingoBoard[j][x];
+                                                }
+                                            }
+                                            finalScore = sum * number;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (bingo) {
+                        break;
+                    }
+                    boardNum++;
+                }
+                if (bingo) {
+                    break;
+                }
             }
-
-            // Within for loop, add check to all boards for bingo
-            
         }
+        
+        System.out.println("Winning Board = " + boardNum);
+        System.out.println("Winning Board Sum = " + sum);
+        System.out.println("Final Score = " + finalScore);
     }
 
 
