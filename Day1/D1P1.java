@@ -3,7 +3,7 @@ package AdventOfCode.Day1;
 import java.io.*;
 
 
-public class mainClass {
+public class D1P1 {
     public static void main(String[] args) throws IOException {
         int currentDepth = 0;
         int previousDepth = 0;

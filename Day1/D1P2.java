@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-public class part2 {
+public class D1P2 {
     
     public static void main(String[] args) throws IOException {
 
