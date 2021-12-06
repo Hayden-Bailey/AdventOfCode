@@ -3,7 +3,7 @@ package AdventOfCode.Day5;
 import java.io.*;
 import java.util.ArrayList;
 
-public class D5P1 {
+public class D5P2 {
     public static void main(String[] args) throws IOException  {
         final int X1_INDEX = 0;
         final int X2_INDEX = 2;
@@ -71,7 +71,29 @@ public class D5P1 {
                 for (int i = Math.min(x1, x2); i <= Math.max(x1, x2); i++) {
                     mapArray[i][y1] += 1;
                 }
-            } 
+            // Determine if Diagonal
+            } else if (Math.abs(x1-x2) == Math.abs(y1-y2)) {
+                int currentY = y1;
+                if (x1 < x2) {
+                    for (int i = x1; i <= x2; i++) {
+                        mapArray[i][currentY] += 1;
+                        if (y1 < y2) {
+                            currentY += 1;
+                        } else {
+                            currentY -= 1;
+                        }
+                    }
+                } else {
+                    for (int i = x1; i >= x2; i--) {
+                        mapArray[i][currentY] += 1;
+                        if (y1 < y2) {
+                            currentY += 1;
+                        } else {
+                            currentY -= 1;
+                        }
+                    }
+                }
+            }
         }
 
         // Iterate through mapArray and find number of 2s
