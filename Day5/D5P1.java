@@ -51,13 +51,10 @@ public class D5P1 {
             }
         }
 
+
         // Lay out area in a 2d array
-        int[][] mapArray = new int[maxX][maxY];
-        for (int i = 0; i < maxX; i++) {
-            for (int j = 0; j < maxY; j++) {
-                mapArray[i][j] = 0;
-            }
-        }
+        int[][] mapArray = new int[(maxX+1)][(maxY+1)];
+        
 
         // Iterate through coords and update 'lines' in mapArray
         for (Integer[] coords : coordValues) {
@@ -66,11 +63,12 @@ public class D5P1 {
             int y1 = coords[Y1_INDEX];
             int y2 = coords[Y2_INDEX];
             if (x1 == x2) {
-                for (int i = Math.min(y1,y2); i <= Math.max(y1,y2); i++) {
+                for (int i = Math.min(y1, y2); i <= Math.max(y1, y2); i++) {
                     mapArray[x1][i] += 1;
                 }
-            } else if (y1 == y2) {
-                for (int i = Math.min(x1, x2); i <= i + Math.max(x1,x2); i++) {
+            }
+            if (y1 == y2) {
+                for (int i = Math.min(x1, x2); i <= Math.max(x1, x2); i++) {
                     mapArray[i][y1] += 1;
                 }
             }
