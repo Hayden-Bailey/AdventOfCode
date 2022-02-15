@@ -2,9 +2,7 @@ package AdventOfCode.Day8;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+
 
 public class D8P1 {
     public static void main(String[] args) throws IOException  {
