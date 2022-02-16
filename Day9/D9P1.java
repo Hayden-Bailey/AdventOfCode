@@ -1,9 +1,7 @@
 package AdventOfCode.Day9;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class D9P1 {
     public static void main(String[] args) throws IOException  {
@@ -33,12 +31,9 @@ public class D9P1 {
         int total = 0;
         int x = 0;
         y = 0;
-        int currentValue = 0;
         for (int[] array : heights) {
             for (int i : array) {
                 if (x == 0 && y == 0) {
-                    // System.out.println(heights[x+1][y]);
-                    // System.out.println(heights[x][y+1]);
                     if (i < heights[x+1][y] && i < heights[x][y+1]) {
                         total += i + 1;
                     }
@@ -55,16 +50,10 @@ public class D9P1 {
                          total += i + 1;
                      }
                  } else if (x == 0) {
-                    // System.out.println(heights[x][y-1]);
-                    // System.out.println(heights[x+1][y]);
-                    // System.out.println(heights[x][y+1]);
                     if (i < heights[x][y-1] && i < heights[x+1][y] && i < heights[x][y+1]) {
                         total += i + 1;
                     }
                 } else if (y == 0) {
-                    // System.out.println(heights[x-1][y]);
-                    // System.out.println(heights[x][y+1]);
-                    // System.out.println(heights[x+1][y]);
                     if (i < heights[x-1][y] && i < heights[x][y+1] && i < heights[x+1][y]) {
                         total += i + 1;
                     }
